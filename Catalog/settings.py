@@ -102,6 +102,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'notdiensture_server.User'
+LOGIN_URL = 'login/'
+LOGOUT_REDIRECT_URL = 'login/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -126,3 +128,14 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DEFAULT_FROM_EMAIL = 'zachtomneetoaaa@gmail.com'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'zachtomneetoaaa@gmail.com'
+EMAIL_HOST_PASSWORD = 'qwerty___666'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+CORS_ORIGIN_ALLOW_ALL = True

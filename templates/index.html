@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img id="img">
+{% for serv in serves %}
+    <button id="{{ serv.id }}" style="background:none;border:none;" onclick="myFunction({{ serv }})">{{ serv.name }}</button><br>
+{% endfor %}
+<a href="/logout"><i class="zmdi zmdi-power"></i><span>Выйти</span></a>
+</body>
+</html>
+
+<script>
+window.onload = function() {
+  get_photo();
+};
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+async function myFunction(serv) {
+    document.getElementById(serv.id).innerHTML=serv.phone_number;
+    const csrf = getCookie('csrftoken')
+    console.log(csrf)
+    const response = await fetch(/history/, {
+        method: 'POST', // или 'PUT'
+        body: JSON.stringify({serv: serv.id}),
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrf
+        }
+  });}
+
+function get_photo(){
+    xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", 'https://pixabay.com/api/?key=23797638-84bb7b0845655b16d04f6b121&image_type=photo', false);
+    xmlHttp.send( null );
+    console.log(xmlHttp.response.)
+    {#document.getElementById('img').setAttribute("src", )#}
+}
+</script>
